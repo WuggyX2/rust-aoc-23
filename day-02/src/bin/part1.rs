@@ -71,4 +71,27 @@ mod tests {
         let result = part1(input, &game);
         assert_eq!(result, 8);
     }
+
+    #[test]
+    fn test_add_methods() {
+        let mut game = GameCubes::new(0, 0, 0);
+
+        game.add_red(1);
+        game.add_green(2);
+        game.add_blue(3);
+
+        assert_eq!(game.red, 1);
+        assert_eq!(game.green, 2);
+        assert_eq!(game.blue, 3);
+    }
+
+    #[test]
+    fn test_is_valid_game() {
+        let valid_game = GameCubes::new(10, 12, 11);
+        let not_valid_game = GameCubes::new(15, 12, 16);
+        let test_bag_of_cubes = GameCubes::new(12, 12, 14);
+
+        assert_eq!(test_bag_of_cubes.is_valid_game(&valid_game), true);
+        assert_eq!(test_bag_of_cubes.is_valid_game(&not_valid_game), false);
+    }
 }
