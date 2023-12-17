@@ -17,7 +17,7 @@ fn part1(input: &str) -> u16 {
                     let last = num_vec.last().expect("Last should be a number");
 
                     let combined = format!("{}{}", first, last);
-                    return combined.parse::<u16>().expect("Failed to parse number");
+                    combined.parse::<u16>().expect("Failed to parse number")
                 }
                 false => 0,
             }

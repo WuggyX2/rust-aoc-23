@@ -22,7 +22,7 @@ fn part2(input: &str) -> u16 {
     input
         .lines()
         .map(|row: &str| -> u16 {
-            let row_digits = get_digits_from_row(&row, &string_digits);
+            let row_digits = get_digits_from_row(row, &string_digits);
 
             match !row_digits.is_empty() {
                 true => {
@@ -30,7 +30,7 @@ fn part2(input: &str) -> u16 {
                     let last = row_digits.last().expect("Last should be a number");
 
                     let combined = format!("{}{}", first, last);
-                    return combined.parse::<u16>().expect("Failed to parse number");
+                    combined.parse::<u16>().expect("Failed to parse number")
                 }
                 false => 0,
             }
@@ -56,7 +56,7 @@ fn get_digits_from_row(row: &str, string_digits: &HashMap<&str, char>) -> Vec<ch
             if line.starts_with(key) {
                 return Some(value.to_owned());
             }
-            return None;
+            None
         });
 
         if value.is_none() {
